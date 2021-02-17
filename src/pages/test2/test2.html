@@ -1,0 +1,55 @@
+<!--
+  Generated template for the Test2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar text-center>เช็คชื่อนักเรียน
+    <!-- <ion-icon name="home" color="primary"(click)="gohome()"></ion-icon><ion-icon name="ios-arrow-back-outline" color="primary" (click)="poppage()"> Back</ion-icon> -->
+    <ion-buttons large end>
+      <button ion-button style="max-width: 30px;"  (click)="gohome()"><ion-icon name="home" color="medium" ></ion-icon></button>
+    </ion-buttons>
+    <ion-buttons large left>
+      <button ion-button (click)="poppage()" ><ion-icon name="ios-arrow-back-outline" color="dark"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <button ion-button  round outline color="pink2">ลาป่วย</button> <button ion-button  round outline color="gray">ลากิจ</button> <button ion-button  round outline color="danger">ไม่มาเรียน</button>
+
+
+  <ion-item>เช็คชื่อ {{ck_date}}</ion-item>
+
+  <ion-card *ngFor="let res of item3">
+
+
+
+    <button ion-item (click)="check(res)" *ngIf="res.status ==null">
+      นักเรียน: {{res.student_name}}: {{res.student_sname}} ชื่อเล่น:{{res.student_nickname}}
+    </button>
+    <button ion-item (click)="check(res)" color="light2" *ngIf="res.status ==1" style="opacity: 0.3;">
+      นักเรียน: {{res.student_name}}: {{res.student_sname}} ชื่อเล่น:{{res.student_nickname}}
+    </button>
+    <button ion-item (click)="check(res)" color="pink2" *ngIf="res.status ==2" style="opacity: 0.3;">
+      นักเรียน: {{res.student_name}}: {{res.student_sname}} ชื่อเล่น:{{res.student_nickname}}
+    </button>
+    <button ion-item (click)="check(res)" color="gray" *ngIf="res.status ==3" style="opacity: 0.3;">
+      นักเรียน: {{res.student_name}}: {{res.student_sname}} ชื่อเล่น:{{res.student_nickname}}
+    </button>
+    <button ion-item (click)="check(res)" color="danger" *ngIf="res.status ==4" style="opacity: 0.3;">
+      นักเรียน: {{res.student_name}}: {{res.student_sname}} ชื่อเล่น:{{res.student_nickname}}
+    </button>
+
+  </ion-card>
+  <button ion-button full (click)="ISNERT_CHECK(item3,ck_date)" color="secondary">บันทึก</button>
+  <ion-navbar >
+    <!-- <ion-title>title</ion-title> -->
+  <ion-label color="danger"><p><b>หมายเหตุ *</b></p></ion-label>
+  <p> <b> การเช็คชื่อนี้เฉพาะนักเรียนที่(ไม่มาเรียน)</b></p>
+  <p> <b>สถานะเริ่มต้นการเช็คชื่อเท่ากับ (มาเรียน)</b> </p>
+  </ion-navbar>
+
+</ion-content>

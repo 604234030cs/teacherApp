@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      เข้าสู่ระบบ
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row></ion-row>
+  </ion-grid>
+    <ion-thumbnail style="margin-left: 115px;">
+      <img src="assets/imgs/โลโก้.png" width= "110px"height="100px" >
+    </ion-thumbnail>
+  <ion-card>
+    <ion-card-content>
+  <form [formGroup]="login" (ngSubmit)="doLogin()">
+    <ion-list>
+      <div>
+      <ion-item>
+        <ion-label floating>บัญชีผู้ใช้</ion-label>
+        <ion-input type="text" formControlName="teacher_user" name="teacher_user" id="teacher_user"></ion-input>
+      </ion-item>
+    </div>
+    <div>
+      <ion-item>
+        <ion-label floating>รหัสผ่าน</ion-label>
+        <ion-input type="password" formControlName="teacher_password" name="teacher_password" id="teacher_password"></ion-input>
+      </ion-item>
+    </div>
+    </ion-list>
+    <br>
+    <div>
+      <button type="submit" [disabled]="!login.valid" block ion-button color="pink2" (click)="logincheck(teacher_user,teacher_password)">ล็อคอิน</button>
+      <div style="margin-top: 10px;">
+        <button type="submit" block ion-button color="gray" (click)="register()">สมัครสมาชิก</button>
+      </div>
+
+    </div>
+  </form>
+  <!-- <div>
+  <ion-item>
+    <ion-label floating text-right>ลืมรหัสผ่าน</ion-label>
+    <ion-input type="text"  name="teacher_password" id="teacher_password"></ion-input>
+  </ion-item>
+</div> -->
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

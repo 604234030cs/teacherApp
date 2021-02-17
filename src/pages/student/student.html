@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title text-center text>ข้อมูลนักเรียน</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <form [formGroup]="user" (ngSubmit)="regisst()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>รหัสนักเรียน</ion-label>
+        <ion-input type="text" formControlName="st_id"></ion-input>
+      </ion-item>
+   
+      <ion-item style="margin-top: 10px;">
+          <ion-label>คำนำหน้า</ion-label>
+          <ion-select formControlName="st_title">
+            <ion-option *ngFor="let title of sex" value="{{title}}">{{title}}</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>ชื่อ</ion-label>
+        <ion-input type="text" formControlName="st_name"></ion-input>
+      </ion-item>
+   
+      <ion-item>
+        <ion-label floating>นามสกุล</ion-label>
+        <ion-input type="text" formControlName="st_lassname"></ion-input>
+      </ion-item>
+   
+      <ion-item>
+        <ion-label floating>ชั้นเรียน</ion-label>
+        <ion-input type="text" formControlName="st_class"></ion-input>
+      </ion-item>
+      
+      <ion-label>เลือกรายชื่อผู้ปกครอง</ion-label>
+      <ion-item style="margin-right: 600px;">
+        <ion-select formControlName="pr_user"style="margin-right: 200px;">
+          <ion-option *ngFor="let data of perent" value="{{data.pr_user}}">{{data.pr_user}}&nbsp;{{data.pr_title}}&nbsp;{{data.pr_name}}&nbsp;{{data.pr_lassname}}</ion-option>
+        </ion-select>
+    </ion-item>
+
+
+    </ion-list>
+    <div>
+      <button type="submit" [disabled]="!user.valid" block ion-button color="primary">ยืนยันการเพิ่ม</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,71 @@
+<!--
+  Generated template for the AddparentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar text-center>เพิ่มข้อมูลผู้ปกครอง
+    <!-- <ion-icon name="home" color="primary"(click)="gohome()"></ion-icon><ion-icon name="ios-arrow-back-outline" color="primary" (click)="poppage()"> Back</ion-icon> -->
+    <ion-buttons large end>
+      <button ion-button style="max-width: 30px;"  (click)="closeModal()"><ion-icon name="close" color="dark" ></ion-icon></button>
+    </ion-buttons>
+    <!-- <ion-buttons large left>
+      <button ion-button (click)="pop()" ><ion-icon name="ios-arrow-back-outline" color="dark"></ion-icon></button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="user" (ngSubmit)="addparent(nameclass,idclass)">
+
+
+    <ion-list>
+        <p> <b>เพิ่มข้อมูล:</b> ผู้ปกครอง</p>
+      <ion-item>
+        <ion-label floating>บัญชีผู้ใช้</ion-label>
+        <ion-input type="text" formControlName="par_user"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>รหัสผ่าน</ion-label>
+        <ion-input type="password" formControlName="par_password"></ion-input>
+      </ion-item>
+
+      <ion-item style="margin-top: 10px;">
+        <ion-label>คำนำหน้า</ion-label>
+        <ion-select formControlName="par_title">
+          <ion-option *ngFor="let title of sex" value="{{title}}">{{title}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-label floating>ชื่อ</ion-label>
+        <ion-input type="text" formControlName="par_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>นามสกุล</ion-label>
+        <ion-input type="text" formControlName="par_sname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>โทรศัพท์</ion-label>
+        <ion-input type="text" formControlName="par_tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>ที่อยู่</ion-label>
+        <ion-input type="text" formControlName="par_address"></ion-input>
+      </ion-item>
+
+    <div>
+      <button type="submit" [disabled]="!user.valid" block ion-button color="secondary">ยืนยันเพิ่มผู้ปกครอง</button>
+    </div>
+    </ion-list>
+  </form>
+
+</ion-content>

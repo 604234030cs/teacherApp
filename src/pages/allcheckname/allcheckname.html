@@ -1,0 +1,109 @@
+<!--
+  Generated template for the AllchecknamePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar text-center>ประวัติการมาเรียน
+    <ion-buttons large left>
+      <button ion-button style="max-width: 30px;"  (click)="pop()"><ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item style="margin-top: 10px;">
+    <ion-label>เลือกวันที่ดูประวัติการเช็คชื่อ</ion-label>
+    <ion-select [(ngModel)]="ck_date" >
+      <ion-option style="margin-right: 30px;" *ngFor="let data of alllistcheckdate" value="{{data.check_data}}" >{{data.check_data}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item style="margin-top: 10px;">
+    <ion-label>เลือกชั้นเรียน</ion-label>
+    <ion-select [(ngModel)]="class_id" >
+      <ion-option style="margin-right: 30px;" *ngFor="let data2 of alllistclass" value="{{data2.class_id}}" >{{data2.class_name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-buttons  >
+    <button ion-button block color="pink2"    (click)="setkey(ck_date,class_id)">ส่ง</button>
+  </ion-buttons>
+  <ion-card *ngFor="let data2 of arry;let i = index"  >
+    <ion-card-content  >
+      <ion-navbar  >
+        <p><b> นักเรียน:{{data2.student_name}} {{data2.student_sname}}  </b></p>
+
+        <p><b>ชื่อเล่น: น้อง{{data2.student_nickname}}</b></p>
+      </ion-navbar>
+      <ion-item >
+        <ion-label>สถานะการมาเรียน: &nbsp;&nbsp; <b>{{data2.ck_status}}</b> </ion-label>
+      </ion-item>
+      <ion-item >
+        <ion-label>สถานะการรับ: &nbsp;&nbsp; <b>{{data2.ck_receive}}</b> </ion-label>
+      </ion-item>
+      <ion-item >
+        <ion-label color="danger">หมายเหตุ: &nbsp;&nbsp; <b>{{data2.ck_other}}</b> </ion-label>
+      </ion-item>
+      <!-- <ion-row>
+        <ion-col >
+          <p>สถานะการมาเรียน:<b>&nbsp;&nbsp;&nbsp;{{data2.ck_status}}</b></p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col >
+          <p>สถานะการมาเรียน:<b>&nbsp;&nbsp;{{data2.ck_receive}}</b></p>
+        </ion-col>
+      </ion-row> -->
+
+
+      <!-- <ion-row>
+        <ion-col >
+          <ion-item>
+            <ion-label ></ion-label>
+            <ion-input type="text" ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row> -->
+      <!-- <ion-item>
+        <ion-label>สถานะการมาเรียน</ion-label>
+        <ion-select [(ngModel)]="data2.ck_status" placeholder="{{status}}">
+          <ion-option value="1">มาเรียน</ion-option>
+          <ion-option value="2">ลาป่วย</ion-option>
+          <ion-option value="3">ลากิจ</ion-option>
+          <ion-option value="4">ไม่มาเรียน</ion-option>
+        </ion-select>
+      </ion-item> -->
+     <!-- <ion-item>
+      <ion-label>สถานะการรับ</ion-label>
+      <ion-select [(ngModel)]="data2.ck_receive" placeholder="{{receive}}" disabled>
+        <ion-option value="1">ยังไม่ถูกรับ</ion-option>
+        <ion-option value="2">รับกลับไปแล้ว</ion-option>
+      </ion-select>
+    </ion-item> -->
+    <!-- <ion-item >
+      <ion-label  color="danger">*หมายเหตุ</ion-label>
+      <ion-input type="text" [(ngModel)]="data2.ck_other"  disabled></ion-input>
+    </ion-item> -->
+    </ion-card-content>
+    <!-- <ion-buttons  >
+      <button ion-button block color="pink2"    (click)="settingreceive(data2.ck_id,data2.ck_status,data2.ck_receive,data2.ck_other)">บันทึก</button>
+    </ion-buttons>
+    <ion-buttons  >
+      <button ion-button block color="danger"    (click)="deletecleckname(data2.ck_id)">ลบข้อมูล</button>
+    </ion-buttons> -->
+  </ion-card>
+
+
+
+
+
+  <ion-fab right bottom>
+    <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <!-- <button ion-fab (click)="goallcheckname()"><ion-icon name="md-clipboard"></ion-icon></button> -->
+      <button ion-fab (click)="goparent()"><ion-icon name="ios-contacts"></ion-icon></button>
+      <button ion-fab (click)="gohome()"><ion-icon name="home" ></ion-icon></button>
+      <!-- <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button> -->
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

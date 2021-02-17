@@ -1,0 +1,51 @@
+<!--
+  Generated template for the AddstudentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>เพิ่มข้อมูลชั้น {{classname}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="user" (ngSubmit)="addstudent()">
+    <ion-list>
+      <p> <b>เพิ่มข้อมูล:</b> นักเรียน</p>
+    <ion-item>
+      <ion-label floating>ชื่อ</ion-label>
+      <ion-input type="text" formControlName="student_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>นามสกุล</ion-label>
+      <ion-input type="text" formControlName="student_sname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>ชื่อเล่น</ion-label>
+      <ion-input type="text" formControlName="student_nickname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>เพศ</ion-label>
+      <ion-input type="text" formControlName="Student_sex"></ion-input>
+    </ion-item>
+    <!-- <ion-item >
+      <ion-label floating>ชั้นเรียน {{classname}}</ion-label>
+      <ion-input type="text" formControlName="class_id" value="{{classname}}" disabled></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label floating>รหัสผู้ปกครอง</ion-label>
+      <ion-input type="text" formControlName="par_user" value="{{paruser}}" disabled></ion-input>
+    </ion-item> -->
+      <p> <b>ชั้นเรียน:</b>{{classname}}</p>
+      <p> <b>รหัสผู้ปกครอง:</b>{{paruser}}</p>
+
+    </ion-list>
+    <div>
+      <button type="submit" [disabled]="!user.valid" block ion-button color="secondary">ยืนยันเพิ่มนักเรียน</button>
+    </div>
+  </form>
+
+
+</ion-content>

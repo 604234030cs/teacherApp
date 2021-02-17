@@ -1,0 +1,94 @@
+<!--
+  Generated template for the TestaddstudentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar text-center>ชั้นเรียน
+    <ion-buttons large left>
+      <button ion-button style="max-width: 30px;"  (click)="pop()"><ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-navbar >
+    <!-- <ion-title>title</ion-title> -->
+    <p> <b>เพิ่มข้อมูล:</b> นักเรียน</p>
+    <ion-buttons large end>
+      <button ion-button  (click)="addparent()"><ion-icon name="md-person-add" color="primary"> เพิ่มผู้ปกครอง</ion-icon></button>
+    </ion-buttons>
+
+
+
+  </ion-navbar>
+
+
+  <form [formGroup]="user" (ngSubmit)="addstudent()">
+    <ion-list>
+      <ion-item style="margin-top: 10px;">
+        <ion-label>คำนำหน้า</ion-label>
+        <ion-select formControlName="student_title">
+          <ion-option *ngFor="let title of title" value="{{title}}">{{title}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+    <ion-item>
+      <ion-label floating>ชื่อ</ion-label>
+      <ion-input type="text" formControlName="student_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>นามสกุล</ion-label>
+      <ion-input type="text" formControlName="student_sname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>ชื่อเล่น</ion-label>
+      <ion-input type="text" formControlName="student_nickname"></ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 10px;">
+      <ion-label>เพศ</ion-label>
+      <ion-select formControlName="student_sex">
+        <ion-option *ngFor="let sex of sex" value="{{sex}}">{{sex}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <!-- <ion-item >
+      <ion-label floating>ชั้นเรียน {{classname}}</ion-label>
+      <ion-input type="text" formControlName="class_id" value="{{classname}}" disabled></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label floating>รหัสผู้ปกครอง</ion-label>
+      <ion-input type="text" formControlName="par_user" value="{{paruser}}" disabled></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-label>เลือกผู้ปกครอง</ion-label>
+      <ion-select formControlName="par_user" [selectOptions]="alert">
+        <ion-option *ngFor="let data of parent"value="{{data.par_user}}" (select)="stpSelect()">{{data.par_name}} {{data.par_sname}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    </ion-list>
+    <div>
+      <button type="submit" [disabled]="!user.valid" block ion-button color="secondary">ยืนยันเพิ่มนักเรียน</button>
+    </div>
+  </form>
+  <!-- <ion-item>
+    <ion-label>Music</ion-label>
+    <ion-select formControlName="par_user" [selectOptions]="alert">
+      <ion-option>Alice in Chains</ion-option>
+      <ion-option>Green Day</ion-option>
+      <ion-option>Nirvana</ion-option>
+      <ion-option>Pearl Jam</ion-option>
+      <ion-option>Smashing Pumpkins</ion-option>
+      <ion-option>Soundgarden</ion-option>
+      <ion-option (select)="stpSelect()">Stone Temple Pilots</ion-option>
+    </ion-select>
+  </ion-item> -->
+
+</ion-content>

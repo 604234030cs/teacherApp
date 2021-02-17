@@ -1,0 +1,161 @@
+<!--
+  Generated template for the MainteacherPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar text-center>จัดการข้อมูล
+    <ion-buttons large left>
+      <button ion-button style="max-width: 30px;"  (click)="pop()"><ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+<ion-card>
+  <ion-card-content>
+    <ion-item>
+        <ion-label color="pink2">แก้ไขข้อมูล</ion-label>
+        <ion-toggle [(ngModel)]="edit" disabled="false" color="primary" ></ion-toggle>
+    </ion-item>
+
+    <ion-grid *ngIf="edit==false">
+      <p>บัญชีผู้ใช้: </p><b> {{teacher.teacher_user}}</b>
+      <br>
+      <p>ผู้ปกครอง: </p>
+      <b>{{teacher.teacher_title}}{{teacher.teacher_name}} {{teacher.teacher_sname}}</b>
+      <br>
+      <p>เบอร์โทร: </p><b> {{teacher.teacher_tel}}</b>
+      <br>
+      <p>ที่อยู่: </p><b> {{ teacher.teacher_address}}</b>
+      <!-- <ion-row>
+        <ion-col>
+           <ion-item >
+             <ion-label floating>รหัสผู้ใช้</ion-label>
+             <ion-input type="text" [(ngModel)]="teacher.teacher_user" value="{{teacher.teacher_user}}" disabled></ion-input>
+           </ion-item>
+        </ion-col>
+     </ion-row>
+      <ion-row>
+        <ion-col>
+           <ion-item >
+             <ion-label floating>คำนำหน้าชื่อ</ion-label>
+             <ion-input type="text" [(ngModel)]="teacher.teacher_title" value="{{teacher.teacher_title}}" disabled></ion-input>
+           </ion-item>
+        </ion-col>
+     </ion-row>
+     <ion-row>
+         <ion-col>
+            <ion-item >
+              <ion-label floating>ชื่อ</ion-label>
+              <ion-input type="text" [(ngModel)]="teacher.teacher_name" value="{{teacher.teacher_name}}" disabled></ion-input>
+            </ion-item>
+         </ion-col>
+         <ion-col>
+            <ion-item >
+              <ion-label floating>นามสกุล</ion-label>
+              <ion-input type="text" [(ngModel)]="teacher.teacher_sname" value="{{teacher.teacher_sname}}" disabled></ion-input>
+            </ion-item>
+         </ion-col>
+      </ion-row>
+      <ion-row>
+         <ion-col>
+            <ion-item >
+              <ion-label floating>เบอร์โทร</ion-label>
+              <ion-input type="text" [(ngModel)]="teacher.teacher_tel" value="{{teacher.teacher_tel}}" disabled></ion-input>
+            </ion-item>
+         </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item >
+            <ion-label floating>ที่อยู่</ion-label>
+            <ion-input type="text" [(ngModel)]="teacher.teacher_address" value="{{teacher.teacher_address}}" disabled></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row> -->
+    </ion-grid>
+
+
+    <!--false-->
+
+    <ion-grid *ngIf="edit==true">
+      <ion-row>
+         <ion-col>
+            <ion-item >
+              <ion-label floating>รหัสผู้ใช้</ion-label>
+              <ion-input type="text" [(ngModel)]="teacher.teacher_user" value="{{teacher.teacher_user}}" disabled></ion-input>
+            </ion-item>
+         </ion-col>
+      </ion-row>
+      <ion-row>
+         <ion-col>
+          <ion-item style="margin-top: 10px;">
+            <ion-label>คำนำหน้า</ion-label>
+            <ion-select [(ngModel)]="teacher.teacher_title">
+              <ion-option *ngFor="let title of sex" value="{{title}}">{{title}}</ion-option>
+            </ion-select>
+          </ion-item>
+         </ion-col>
+      </ion-row>
+      <ion-row>
+         <ion-col>
+            <ion-item >
+              <ion-label floating>ชื่อ</ion-label>
+              <ion-input type="text" [(ngModel)]="teacher.teacher_name" value="{{teacher.teacher_name}}" ></ion-input>
+            </ion-item>
+         </ion-col>
+         <ion-col>
+            <ion-item >
+              <ion-label floating>นามสกุล</ion-label>
+              <ion-input type="text" [(ngModel)]="teacher.teacher_sname" value="{{teacher.teacher_sname}}" ></ion-input>
+            </ion-item>
+         </ion-col>
+      </ion-row>
+      <ion-row>
+         <!-- <ion-col>
+            <ion-item >
+              <ion-label floating>อายุ</ion-label>
+              <ion-input type="text" [(ngModel)]="teacher.tage" value="{{teacher.tage}}" ></ion-input>
+            </ion-item>
+         </ion-col> -->
+         <ion-col>
+          <ion-item >
+            <ion-label floating>เบอร์โทร</ion-label>
+            <ion-input type="text" [(ngModel)]="teacher.teacher_tel" value="{{teacher.teacher_tel}}" ></ion-input>
+          </ion-item>
+         </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item >
+            <ion-label floating>ที่อยู่</ion-label>
+            <ion-input type="text" [(ngModel)]="teacher.teacher_address" value="{{teacher.teacher_address}}" ></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <button ion-button *ngIf="edit==true" (click)="editAccount()" block color="pink2">ยืนยันการแก้ไข</button>
+
+    </ion-grid>
+
+  </ion-card-content>
+</ion-card>
+
+<ion-card color="pink" *ngIf="edit==false">
+  <ion-card-header color="primary" (click)="updatecoordinates()" text-center><ion-icon name="" color="dark"></ion-icon>
+    <ion-label color="dark">อัพเดพพิกัดที่อยู่</ion-label>
+  </ion-card-header>
+</ion-card>
+<!-- <ion-card color="light2" *ngIf="edit==false">
+  <ion-card-header color="primary" (click)="updatecoordinates3()" text-center><ion-icon name="" color="dark"></ion-icon>
+    <ion-label color="dark">ล้างพิกัดที่อยู่</ion-label>
+  </ion-card-header>
+</ion-card> -->
+
+
+
+
+</ion-content>

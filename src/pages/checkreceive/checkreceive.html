@@ -1,0 +1,110 @@
+<!--
+  Generated template for the CheckreceivePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar text-center>เช็คชื่อกลับบ้าน
+    <ion-buttons large left>
+      <button ion-button style="max-width: 30px;"  (click)="pop()"><ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!-- (click)="settingreceive(data.st_id,data.ck_date,data.par_user)" -->
+  <ion-navbar  >
+   <ion-item large end>
+    <ion-label>ตรวจสอบระยะทาง</ion-label>
+    <ion-toggle [(ngModel)]="edit" color="primary" (ngModelChange)="mode()"></ion-toggle>
+</ion-item>
+  </ion-navbar>
+  <ion-navbar  >
+  <ion-item >จัดการสถานะวันที่ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; {{ck_date}}</ion-item>
+  </ion-navbar>
+  <button style="margin-right: 100px;" ion-button  round outline color="gray">รับกลับไปแล้ว</button>
+
+
+  <ion-grid *ngIf="edit==false">
+
+
+
+  <ion-card *ngFor="let data of item3; let i = index; "  >
+    <!-- <form [formGroup]="user" (ngSubmit)="settingreceive(data.st_id,ck_receive,ck_other)"> -->
+    <ion-card-header text-center >
+      <ion-navbar *ngIf="data.ck_receive == 1" >
+        <p><b> นักเรียน: {{data.student_name}} {{data.student_sname}}</b></p>
+      </ion-navbar>
+      <ion-navbar color="gray"s *ngIf="data.ck_receive == 2 " style="opacity: 0.5;">
+        <p><b> นักเรียน: {{data.student_name}} {{data.student_sname}}</b></p>
+      </ion-navbar>
+
+
+     <ion-item>
+      <ion-label>สถานะการรับ</ion-label>
+      <ion-select [(ngModel)]="data.ck_receive" placeholder="{{text}}">
+        <ion-option value="1">ยังไม่ถูกรับ</ion-option>
+        <ion-option value="2">รับกลับไปแล้ว</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label color="danger">*หมายเหตุ</ion-label>
+      <ion-input type="text" [(ngModel)]="data.ck_other"  ></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label  color="danger">ระยะทางห่าง: {{data.directions}}</ion-label>
+
+    </ion-item>
+    </ion-card-header>
+    <ion-buttons  >
+      <button ion-button block color="pink2"    (click)="settingreceive(data.ck_id,data.ck_receive,data.ck_other)">บันทึก</button>
+    </ion-buttons>
+
+  </ion-card>
+</ion-grid>
+
+<ion-grid  *ngIf="edit==true">
+
+</ion-grid>
+  <ion-card *ngFor="let data of arry; let i = index; "  >
+    <!-- <form [formGroup]="user" (ngSubmit)="settingreceive(data.st_id,ck_receive,ck_other)"> -->
+    <ion-card-header text-center >
+      <ion-navbar *ngIf="data.ck_receive == 1" >
+        <p><b> นักเรียน: {{data.student_name}} {{data.student_sname}}</b></p>
+      </ion-navbar>
+      <ion-navbar color="gray" *ngIf="data.ck_receive == 2 " style="opacity: 0.5;">
+        <p><b> นักเรียน: {{data.student_name}} {{data.student_sname}}</b></p>
+      </ion-navbar>
+
+
+     <ion-item>
+      <ion-label>สถานะการรับ</ion-label>
+      <ion-select [(ngModel)]="data.ck_receive" placeholder="{{text}}">
+        <ion-option value="1">ยังไม่ถูกรับ</ion-option>
+        <ion-option value="2">รับกลับไปแล้ว</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label  color="danger">*หมายเหตุ</ion-label>
+      <ion-input type="text" [(ngModel)]="data.ck_other"  ></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label  color="danger">ระยะทางห่าง: {{data.directions}}</ion-label>
+      <!--  -->
+      <!-- <p></p> -->
+      <!-- <ion-input type="text"   ></ion-input> -->
+    </ion-item>
+    </ion-card-header>
+    <ion-buttons  >
+      <button ion-button block color="pink2"    (click)="settingreceive(data.ck_id,data.ck_receive,data.ck_other)">บันทึก</button>
+    </ion-buttons>
+
+  </ion-card>
+
+
+
+
+</ion-content>
